@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-
+ 
 // 跨域
 app.use(require('cors')())
 // 接受json的数据 （body中的数据）

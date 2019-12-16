@@ -1,16 +1,15 @@
 <template>
   <div class="about">
-    <h1>分类列表</h1>
-    <el-table :data="categoryList" style="width: 100%">
+    <h1>物品列表</h1>
+    <el-table :data="itemList" style="width: 100%">
       <el-table-column prop="_id" label="ID"> </el-table-column>
-      <el-table-column prop="parent.name" label="父级分类"> </el-table-column>
-      <el-table-column prop="name" label="分类名称"> </el-table-column>
+      <el-table-column prop="name" label="物品名称"> </el-table-column>
       <el-table-column fixed="right" label="操作">
         <template slot-scope="scope">
           <el-button
             type="text"
             size="small"
-            @click="$router.push(`/category/edit/${scope.row._id}`)"
+            @click="$router.push(`/items/edit/${scope.row._id}`)"
             >编辑</el-button
           >
           <el-button type="text" size="small" @click="remove(scope.row)"
@@ -23,10 +22,10 @@
 </template>
 <script>
 export default {
-  name: "categoryList",
+  name: "itemList",
   data() {
     return {
-      categoryList: []
+      itemList: []
     };
   },
   mounted() {
@@ -34,8 +33,8 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("/rest/categories");
-      this.categoryList = res.data.list;
+      const res = await this.$http.get("/rest/items");
+      this.itemList = res.data.list;
     },
     async remove(row) {
       this.$confirm(`确定要删除"${row.name}"分类吗？`, "提示", {
@@ -44,7 +43,7 @@ export default {
         type: "warning"
       })
         .then(async () => {
-          await this.$http.delete(`rest/categories/${row._id}`);
+          await this.$http.delete(`rest/items/${row._id}`);
           this.fetch();
           this.$message({
             type: "success",
