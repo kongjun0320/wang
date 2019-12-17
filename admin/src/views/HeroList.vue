@@ -1,12 +1,13 @@
 <template>
   <div class="about">
-    <h1>物品列表</h1>
+    <h1>英雄列表</h1>
     <el-table :data="itemList" style="width: 100%">
       <el-table-column prop="_id" label="ID"> </el-table-column>
-      <el-table-column prop="name" label="物品名称"> </el-table-column>
-      <el-table-column prop="icon" label="图标">
+      <el-table-column prop="name" label="英雄名称"> </el-table-column>
+      <el-table-column prop="title" label="称号"> </el-table-column>
+      <el-table-column prop="avatar" label="头像">
         <template slot-scope="scope">
-          <img :src="scope.row.icon" alt="" style="height:3rem"> 
+          <img :src="scope.row.avatar" alt="" style="height:3rem"> 
         </template>
          </el-table-column>
       <el-table-column fixed="right" label="操作">
@@ -14,7 +15,7 @@
           <el-button
             type="text"
             size="small"
-            @click="$router.push(`/items/edit/${scope.row._id}`)"
+            @click="$router.push(`/heroes/edit/${scope.row._id}`)"
             >编辑</el-button
           >
           <el-button type="text" size="small" @click="remove(scope.row)"
@@ -38,7 +39,7 @@ export default {
   },
   methods: {
     async fetch() {
-      const res = await this.$http.get("/rest/items");
+      const res = await this.$http.get("/rest/heroes");
       this.itemList = res.data.list;
     },
     async remove(row) {
@@ -48,7 +49,7 @@ export default {
         type: "warning"
       })
         .then(async () => {
-          await this.$http.delete(`rest/items/${row._id}`);
+          await this.$http.delete(`rest/heroes/${row._id}`);
           this.fetch();
           this.$message({
             type: "success",

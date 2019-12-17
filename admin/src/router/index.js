@@ -34,6 +34,19 @@ const routes = [
       path: '/items/list',
       name: 'itemsList',
       component: () => import('../views/ItemList.vue')
+    },{
+      path: '/heroes/create',
+      name: 'heroesCreate',
+      component: () => import('../views/HeroEdit.vue')
+    },{
+      path: '/heroes/edit/:id',
+      name: 'heroesEdit',
+      props:true,
+      component: () => import('../views/HeroEdit.vue')
+    },{
+      path: '/heroes/list',
+      name: 'heroesList',
+      component: () => import('../views/HeroList.vue')
     }]
   },
 

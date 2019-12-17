@@ -1,5 +1,6 @@
 module.exports = app => {
   const express = require('express')
+  const path = require('path')
   const router = express.Router({
     mergeParams: true
   })
@@ -54,4 +55,18 @@ module.exports = app => {
     req.Model = require(`../../models/${modelName}`)
     next()
   }, router)
+
+  const multer = require('multer')
+  const upload = multer({
+    dest: path.join(__dirname,'../../uploads')
+  })
+  
+  // 静态目录的开放
+  app.use('/uploads',express.static(path.join(__dirname,'../../uploads')))
+
+  app.post('/admin/api/upload', upload.single('file'), (req, res) => {
+    const file = req.file
+    file.url = `http://localhost:5000/uploads/${file.filename}`
+    res.send(file)
+  })
 }

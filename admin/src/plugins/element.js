@@ -1,7 +1,13 @@
 import Vue from 'vue'
-import { Button, Container, Menu, Submenu, MenuItemGroup, MenuItem, Aside, Header, Dropdown, DropdownItem, DropdownMenu, Main, Table, TableColumn, Footer, Form, FormItem, Input, Message, MessageBox, Select, Option } from 'element-ui'
+import { Button, Container, Menu, Submenu, MenuItemGroup, MenuItem, Aside, Header, Dropdown, DropdownItem, DropdownMenu, Main, Table, TableColumn, Footer, Form, FormItem, Input, Message, MessageBox, Select, Option,Upload,Rate,TabPane,Tabs,Row,Col } from 'element-ui'
 
 Vue.use(Button)
+Vue.use(Col)
+Vue.use(Row)
+Vue.use(Upload)
+Vue.use(TabPane)
+Vue.use(Tabs)
+Vue.use(Rate)
 Vue.use(Option)
 Vue.use(Select)
 Vue.use(Container)
