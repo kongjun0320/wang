@@ -47,6 +47,32 @@ const routes = [
       path: '/heroes/list',
       name: 'heroesList',
       component: () => import('../views/HeroList.vue')
+    },{
+      path: '/articles/create',
+      name: 'articlesCreate',
+      component: () => import('../views/ArticleEdit.vue')
+    },{
+      path: '/articles/edit/:id',
+      name: 'articlesEdit',
+      props:true,
+      component: () => import('../views/ArticleEdit.vue')
+    },{
+      path: '/articles/list',
+      name: 'articlesList',
+      component: () => import('../views/ArticleList.vue')
+    },{
+      path: '/ads/create',
+      name: 'adsCreate',
+      component: () => import('../views/AdEdit.vue')
+    },{
+      path: '/ads/edit/:id',
+      name: 'adsEdit',
+      props:true,
+      component: () => import('../views/AdEdit.vue')
+    },{
+      path: '/ads/list',
+      name: 'adsList',
+      component: () => import('../views/AdList.vue')
     }]
   },
 

@@ -24,7 +24,7 @@
 </template>
 <script>
 export default {
-  name: "categoryEdit",
+  name: "itemEdit",
   data() {
     return {
       model: {}
